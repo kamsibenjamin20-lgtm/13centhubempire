@@ -1,78 +1,131 @@
-<body>
-
-  <nav class="navbar">
-    <h1>13cent Hub Empire</h1>
-
-    <div class="menu">
-      <a href="#">Home</a>
-      <a href="#">Phones</a>
-      <a href="#">Accessories</a>
-      <a href="#">Contact</a>
-    </div>
-  </nav>
-
-
-  <h1>Welcome to 13cent Hub Empire</h1>
-
-  <p>Premium phones and gadgets at the best prices.</p>
-
-</body>
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: Arial, sans-serif;
   background: #f5f7fb;
   color: #111;
-  position: relative;
-  overflow-x: hidden;
 }
 
-/* Small background designs */
-body::before {
-  content: "";
-  position: fixed;
-  top: -100px;
-  right: -100px;
-  width: 300px;
-  height: 300px;
-  background: #003cff;
-  opacity: 0.08;
-  border-radius: 50%;
-  z-index: -1;
+/* Navigation */
+.navbar {
+  background: #0047ff;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  bottom: -120px;
-  left: -100px;
-  width: 350px;
-  height: 350px;
-  background: #000;
-  opacity: 0.05;
-  border-radius: 50%;
-  z-index: -1;
+.navbar h1 {
+  color: white;
+  font-size: 26px;
 }
 
-h1, h2, h3 {
-  color: #0047ff;
+.menu a {
+  color: white;
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 17px;
 }
 
-p {
-  color: #111;
-}
-
-.product {
+/* Hero Section */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 40px;
   background: white;
-  border-radius: 15px;
-  padding: 15px;
-  margin: 15px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.hero-text {
+  max-width: 500px;
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  color: #0047ff;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 20px;
+  color: #222;
+  margin-bottom: 30px;
+  line-height: 1.5;
 }
 
 button {
   background: #0047ff;
   color: white;
   border: none;
-  padding: 12px 20px;
+  padding: 14px 30px;
   border-radius: 8px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+/* Product Image */
+.hero-image img {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Product Cards */
+.product {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+
+.product h3 {
+  color: #0047ff;
+  font-size: 22px;
+}
+
+.product p {
+  color: #111;
+  font-size: 16px;
+}
+
+/* Background Design */
+body::before {
+  content: "";
+  position: fixed;
+  width: 250px;
+  height: 250px;
+  background: #0047ff;
+  opacity: 0.08;
+  border-radius: 50%;
+  top: -80px;
+  right: -80px;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  width: 250px;
+  height: 250px;
+  background: black;
+  opacity: 0.05;
+  border-radius: 50%;
+  bottom: -80px;
+  left: -80px;
+  z-index: -1;
 }

@@ -1,3 +1,22 @@
+<body>
+
+  <nav class="navbar">
+    <h1>13cent Hub Empire</h1>
+
+    <div class="menu">
+      <a href="#">Home</a>
+      <a href="#">Phones</a>
+      <a href="#">Accessories</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+
+  <h1>Welcome to 13cent Hub Empire</h1>
+
+  <p>Premium phones and gadgets at the best prices.</p>
+
+</body>
 body {
   margin: 0;
   font-family: Arial, sans-serif;

@@ -6,7 +6,6 @@
   <title>13cent Hub Empire | iPhone, Samsung, Redmi, iPad & Headsets</title>
   <style>
     :root {
-      /* Palette: Soft Blue-Grey & Crisp White */
       --bg-body: #f0f4f8;          
       --bg-surface: #ffffff;       
       --bg-accent-light: #e6f0fa;  
@@ -37,7 +36,6 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 10px; }
 
-    /* Top Announcement Banner */
     .top-bar {
       background: var(--blue-secondary);
       color: #ffffff;
@@ -47,7 +45,6 @@
       font-weight: 600;
     }
 
-    /* Marketplace Header */
     header {
       background: var(--bg-surface);
       box-shadow: var(--shadow);
@@ -64,7 +61,6 @@
     }
     .logo span { color: var(--text-blue); }
 
-    /* Search Bar */
     .search-box { flex: 1; max-width: 600px; display: flex; }
     .search-box input {
       width: 100%; padding: 10px 14px;
@@ -85,7 +81,6 @@
       font-weight: 700; display: flex; align-items: center; gap: 4px;
     }
 
-    /* Category Ribbon */
     .category-nav {
       background: var(--bg-surface); border-top: 1px solid var(--border);
       overflow-x: auto; white-space: nowrap; scrollbar-width: none;
@@ -100,7 +95,6 @@
       background: var(--blue-primary); color: #ffffff;
     }
 
-    /* Hero Banner */
     .hero-banner {
       background: linear-gradient(135deg, var(--blue-secondary) 0%, var(--blue-primary) 100%);
       color: #ffffff; border-radius: 6px; padding: 25px; margin: 15px 0;
@@ -108,7 +102,6 @@
     }
     .hero-banner h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; color: #ffffff; }
 
-    /* Section Header */
     .section-title {
       background: var(--blue-primary); color: #ffffff; padding: 10px 15px;
       border-radius: 6px 6px 0 0; font-size: 1.1rem; font-weight: 800;
@@ -116,7 +109,6 @@
       align-items: center; margin-top: 15px;
     }
 
-    /* Product Grid Layout */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -141,7 +133,6 @@
       font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 2px;
     }
     
-    /* Easy Custom Image Wrapper */
     .product-img-wrapper {
       width: 100%; height: 160px; 
       border-radius: 4px; overflow: hidden;
@@ -170,7 +161,6 @@
     
     .rating { font-size: 0.75rem; color: var(--blue-primary); margin-bottom: 8px; }
 
-    /* Action Buttons */
     .btn-action-group { display: flex; flex-direction: column; gap: 6px; }
     .btn-add {
       width: 100%; background: var(--blue-primary); color: #ffffff;
@@ -187,7 +177,6 @@
     }
     .btn-wa-card:hover { background: var(--whatsapp-hover); }
 
-    /* Sticky WhatsApp Floating Button */
     .whatsapp-float {
       position: fixed; bottom: 20px; right: 20px;
       background-color: var(--whatsapp-green); color: #ffffff;
@@ -198,7 +187,6 @@
     }
     .whatsapp-float:hover { background-color: var(--whatsapp-hover); }
 
-    /* Footer */
     footer {
       background: var(--bg-surface); border-top: 2px solid var(--border);
       color: var(--text-black); margin-top: 30px; padding: 30px 0 15px; font-size: 0.85rem;
@@ -213,17 +201,14 @@
 </head>
 <body>
 
-  <!-- Floating WhatsApp Action Button -->
   <a href="https://wa.me/2348106715713?text=Hello%2013cent%20Hub%20Empire,%20I%20want%20to%20make%20an%20inquiry." class="whatsapp-float" target="_blank" rel="noopener">
     💬 Chat on WhatsApp
   </a>
 
-  <!-- Top Announcement Banner -->
   <div class="top-bar">
     ⚡ 13CENT HUB EMPIRE: BEST NAIRA DEALS ON IPHONES, SAMSUNG, REDMI, IPADS & HEADSETS!
   </div>
 
-  <!-- Header -->
   <header>
     <div class="container header-inner">
       <a href="#" class="logo">13CENT <span>HUB</span></a>
@@ -252,7 +237,6 @@
   </header>
 
   <main class="container">
-    <!-- Hero Banner -->
     <div class="hero-banner">
       <div>
         <h1>13CENT EMPIRE DEALS</h1>
@@ -265,20 +249,16 @@
       <span>🔥 Featured Inventory (Naira Deals)</span>
     </div>
 
-    <!-- Product Grid -->
     <div class="product-grid">
       
-      <!-- ==================== PRODUCT 1: IPHONE ==================== -->
+      <!-- PRODUCT 1: IPHONE -->
       <div class="product-card" id="iphone">
         <span class="badge">HOT DEAL</span>
         <div class="product-img-wrapper">
-          <!-- EDIT IMAGE HERE: Put local path like "images/iphone.jpg" OR online URL -->
-          <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=60" alt="iPhone">
+          <img src="images/iphone.jpg" alt="iPhone">
         </div>
-        <!-- EDIT NAME HERE -->
-        <div class="product-title">Apple iPhone 13 Pro Max (128GB) - Clean UK Used</div>
+        <div class="product-title">Apple iPhone Series (128GB) - Clean UK Used</div>
         <div class="price-box">
-          <!-- EDIT NAIRA PRICES HERE -->
           <div class="current-price">₦680,000</div>
           <div class="old-price-row">
             <span class="old-price">₦720,000</span>
@@ -287,23 +267,19 @@
         </div>
         <div class="rating">★★★★★ (128)</div>
         <div class="btn-action-group">
-          <!-- EDIT WHATSAPP MESSAGE WITH YOUR PRICE -->
-          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20iPhone%2013%20Pro%20Max%20for%20N680,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20iPhone%20for%20N680,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
           <button class="btn-add">Add to Cart</button>
         </div>
       </div>
 
-      <!-- ==================== PRODUCT 2: SAMSUNG ==================== -->
+      <!-- PRODUCT 2: SAMSUNG -->
       <div class="product-card" id="samsung">
         <span class="badge">BESTSELLER</span>
         <div class="product-img-wrapper">
-          <!-- EDIT IMAGE HERE -->
-          <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=60" alt="Samsung">
+          <img src="images/samsung.jpg" alt="Samsung">
         </div>
-        <!-- EDIT NAME HERE -->
-        <div class="product-title">Samsung Galaxy S22 Ultra 5G (256GB)</div>
+        <div class="product-title">Samsung Galaxy Series 5G (256GB)</div>
         <div class="price-box">
-          <!-- EDIT NAIRA PRICES HERE -->
           <div class="current-price">₦580,000</div>
           <div class="old-price-row">
             <span class="old-price">₦630,000</span>
@@ -312,22 +288,19 @@
         </div>
         <div class="rating">★★★★★ (95)</div>
         <div class="btn-action-group">
-          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Samsung%20S22%20Ultra%20for%20N580,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Samsung%20for%20N580,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
           <button class="btn-add">Add to Cart</button>
         </div>
       </div>
 
-      <!-- ==================== PRODUCT 3: REDMI ==================== -->
+      <!-- PRODUCT 3: REDMI -->
       <div class="product-card" id="redmi">
         <span class="badge">BUDGET KING</span>
         <div class="product-img-wrapper">
-          <!-- EDIT IMAGE HERE -->
-          <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=60" alt="Redmi">
+          <img src="images/redmi.jpg" alt="Redmi">
         </div>
-        <!-- EDIT NAME HERE -->
-        <div class="product-title">Xiaomi Redmi Note 12 Pro (8GB/256GB)</div>
+        <div class="product-title">Xiaomi Redmi Note Series (8GB/256GB)</div>
         <div class="price-box">
-          <!-- EDIT NAIRA PRICES HERE -->
           <div class="current-price">₦240,000</div>
           <div class="old-price-row">
             <span class="old-price">₦270,000</span>
@@ -336,22 +309,19 @@
         </div>
         <div class="rating">★★★★☆ (64)</div>
         <div class="btn-action-group">
-          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Redmi%20Note%2012%20Pro%20for%20N240,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Redmi%20for%20N240,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
           <button class="btn-add">Add to Cart</button>
         </div>
       </div>
 
-      <!-- ==================== PRODUCT 4: IPAD ==================== -->
+      <!-- PRODUCT 4: IPAD -->
       <div class="product-card" id="ipad">
         <span class="badge">POPULAR</span>
         <div class="product-img-wrapper">
-          <!-- EDIT IMAGE HERE -->
-          <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&auto=format&fit=crop&q=60" alt="iPad">
+          <img src="images/ipad.jpg" alt="iPad">
         </div>
-        <!-- EDIT NAME HERE -->
-        <div class="product-title">Apple iPad 10th Gen 10.9" WiFi + Cellular</div>
+        <div class="product-title">Apple iPad Retina Display WiFi + Cellular</div>
         <div class="price-box">
-          <!-- EDIT NAIRA PRICES HERE -->
           <div class="current-price">₦490,000</div>
           <div class="old-price-row">
             <span class="old-price">₦540,000</span>
@@ -360,22 +330,19 @@
         </div>
         <div class="rating">★★★★★ (82)</div>
         <div class="btn-action-group">
-          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20iPad%2010th%20Gen%20for%20N490,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20iPad%20for%20N490,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
           <button class="btn-add">Add to Cart</button>
         </div>
       </div>
 
-      <!-- ==================== PRODUCT 5: HEADSET ==================== -->
+      <!-- PRODUCT 5: HEADSET -->
       <div class="product-card" id="headsets">
         <span class="badge">ACCESSORY</span>
         <div class="product-img-wrapper">
-          <!-- EDIT IMAGE HERE -->
-          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60" alt="Headset">
+          <img src="images/headset.jpg" alt="Headset">
         </div>
-        <!-- EDIT NAME HERE -->
-        <div class="product-title">P9 Wireless Bluetooth Headset - Deep Bass</div>
+        <div class="product-title">Pro Wireless Bluetooth Headset - Deep Bass</div>
         <div class="price-box">
-          <!-- EDIT NAIRA PRICES HERE -->
           <div class="current-price">₦25,000</div>
           <div class="old-price-row">
             <span class="old-price">₦35,000</span>
@@ -384,7 +351,7 @@
         </div>
         <div class="rating">★★★★☆ (210)</div>
         <div class="btn-action-group">
-          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20P9%20Wireless%20Headset%20for%20N25,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Headset%20for%20N25,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
           <button class="btn-add">Add to Cart</button>
         </div>
       </div>
@@ -392,7 +359,6 @@
     </div>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="container footer-grid">
       <div>

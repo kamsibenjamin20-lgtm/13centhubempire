@@ -3,172 +3,341 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>13cent Hub Empire | Premium Mobile Phones & Tech Services</title>
+  <title>13cent Hub Empire | Online Shopping for Phones & Tech</title>
   <style>
-    /* Design Tokens */
     :root {
-      --bg-main: #0b0f17;
-      --bg-surface: #131b2e;
-      --bg-surface-hover: #1c2742;
-      --accent-blue: #3b82f6;
-      --accent-purple: #8b5cf6;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border: rgba(255, 255, 255, 0.08);
-      --radius: 12px;
+      /* Palette: Blue & White Backgrounds, Blue & Black Text */
+      --bg-body: #f0f4f8;          /* Light soft blue-grey background */
+      --bg-surface: #ffffff;       /* Pure white card & container surfaces */
+      --bg-accent-light: #e6f0fa;  /* Subtle blue background tint */
+      
+      --blue-primary: #0056b3;     /* Deep bold blue for actions & titles */
+      --blue-secondary: #003366;   /* Dark navy blue */
+      --blue-hover: #004085;       /* Darker blue hover state */
+
+      --text-black: #111111;      /* Crisp black body text */
+      --text-blue: #0056b3;       /* Blue text highlights */
+      --text-muted: #4a5568;      /* Slate black/grey secondary text */
+
+      --border: #d0e1f9;          /* Subtle light blue border */
+      --radius-sm: 4px;
+      --shadow: 0 2px 8px rgba(0, 86, 179, 0.08);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-black);
+      line-height: 1.4;
     }
 
-    /* Container */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 10px; }
 
-    /* Header & Navigation */
+    /* Top Announcement Banner */
+    .top-bar {
+      background: var(--blue-secondary);
+      color: #ffffff;
+      font-size: 0.75rem;
+      text-align: center;
+      padding: 6px 0;
+      font-weight: 600;
+    }
+
+    /* Marketplace Header */
     header {
+      background: var(--bg-surface);
+      box-shadow: var(--shadow);
       position: sticky; top: 0; z-index: 100;
-      background: rgba(19, 27, 46, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 2px solid var(--border);
     }
-    .nav-wrapper {
-      display: flex; justify-content: space-between; align-items: center;
-      height: 70px;
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0; gap: 15px;
     }
     .logo {
-      font-size: 1.35rem; font-weight: 800; text-decoration: none; color: #fff;
-      letter-spacing: -0.02em;
+      font-size: 1.4rem; font-weight: 900; text-decoration: none;
+      color: var(--text-black); font-style: italic; white-space: nowrap;
     }
-    .logo span {
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: 0.2s; }
-    .nav-links a:hover { color: var(--text-main); }
+    .logo span { color: var(--text-blue); }
 
-    /* Buttons */
-    .btn {
-      display: inline-block; padding: 0.75rem 1.5rem; border-radius: var(--radius);
-      font-weight: 600; text-decoration: none; cursor: pointer; transition: 0.2s;
+    /* Search Bar */
+    .search-box {
+      flex: 1; max-width: 600px; display: flex;
     }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-      color: #fff; border: none;
+    .search-box input {
+      width: 100%; padding: 10px 14px;
+      border: 2px solid var(--blue-primary);
+      border-right: none; border-radius: 4px 0 0 4px;
+      outline: none; font-size: 0.9rem; color: var(--text-black);
+      background: #ffffff;
     }
-    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .search-box button {
+      background: var(--blue-primary); color: #ffffff; border: none;
+      padding: 0 20px; font-weight: bold; border-radius: 0 4px 4px 0;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .search-box button:hover { background: var(--blue-hover); }
 
-    /* Hero Section */
-    .hero { padding: 5rem 0 3rem; text-align: center; }
-    .hero h1 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 1rem; }
-    .hero p { color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: 0 auto 2rem; }
+    .header-actions { display: flex; gap: 15px; align-items: center; }
+    .action-item {
+      text-decoration: none; color: var(--text-blue); font-size: 0.85rem;
+      font-weight: 700; display: flex; align-items: center; gap: 4px;
+    }
+    .action-item:hover { color: var(--blue-secondary); }
 
-    /* Grid Section */
-    .grid {
+    /* Category Ribbon */
+    .category-nav {
+      background: var(--bg-surface); border-top: 1px solid var(--border);
+      overflow-x: auto; white-space: nowrap;
+    }
+    .category-nav ul {
+      display: flex; list-style: none; padding: 8px 0; gap: 20px;
+    }
+    .category-nav a {
+      text-decoration: none; color: var(--text-black); font-size: 0.85rem;
+      font-weight: 600; padding: 4px 10px; border-radius: var(--radius-sm);
+    }
+    .category-nav a:hover, .category-nav a.active {
+      background: var(--blue-primary); color: #ffffff;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--blue-secondary) 0%, var(--blue-primary) 100%);
+      color: #ffffff; border-radius: 6px; padding: 25px; margin: 15px 0;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .hero-banner h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; color: #ffffff; }
+    .hero-banner p { font-size: 0.95rem; opacity: 0.95; color: #ffffff; }
+
+    /* Section Headers */
+    .section-title {
+      background: var(--blue-primary); color: #ffffff; padding: 10px 15px;
+      border-radius: 6px 6px 0 0; font-size: 1.1rem; font-weight: 800;
+      text-transform: uppercase; display: flex; justify-content: space-between;
+      align-items: center; margin-top: 15px;
+    }
+    .section-title .timer {
+      font-size: 0.85rem; font-weight: 600; background: rgba(255, 255, 255, 0.2);
+      padding: 3px 8px; border-radius: 3px; color: #ffffff;
+    }
+
+    /* Product Grid layout */
+    .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem; margin: 3rem 0;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px; background: var(--bg-surface); padding: 12px;
+      border-radius: 0 0 6px 6px; box-shadow: var(--shadow);
+      border: 1px solid var(--border); border-top: none;
     }
-    .card {
-      background: var(--bg-surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.5rem; transition: 0.25s;
+    .product-card {
+      background: #ffffff; border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 10px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: box-shadow 0.2s, transform 0.2s; position: relative;
     }
-    .card:hover {
-      transform: translateY(-4px); border-color: var(--accent-blue);
-      background: var(--bg-surface-hover);
+    .product-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 86, 179, 0.15); transform: translateY(-2px);
+      border-color: var(--blue-primary);
     }
-    .card-tag {
-      font-size: 0.75rem; text-transform: uppercase; color: var(--accent-blue);
-      font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.5rem; display: block;
+    .badge {
+      position: absolute; top: 8px; left: 8px;
+      background: var(--blue-primary); color: #ffffff;
+      font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 2px;
     }
-    .card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-    .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem; }
-    .price { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
+    .img-placeholder {
+      width: 100%; height: 140px; background: var(--bg-accent-light);
+      border: 1px dashed var(--border); border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-blue); font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .product-title {
+      font-size: 0.85rem; color: var(--text-black); font-weight: 600;
+      line-height: 1.25; height: 2.5em; overflow: hidden;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+      margin-bottom: 6px;
+    }
+    .price-box { margin-bottom: 8px; }
+    .current-price { font-size: 1.1rem; font-weight: 800; color: var(--text-blue); }
+    .old-price-row { display: flex; gap: 6px; align-items: center; font-size: 0.75rem; }
+    .old-price { text-decoration: line-through; color: var(--text-muted); }
+    .discount-pct { color: var(--blue-primary); font-weight: 700; background: var(--bg-accent-light); padding: 0 4px; }
+    
+    .rating { font-size: 0.75rem; color: var(--blue-primary); margin-bottom: 8px; }
+    .btn-add {
+      width: 100%; background: var(--blue-primary); color: #ffffff;
+      border: none; padding: 8px 0; font-weight: 700; font-size: 0.8rem;
+      border-radius: var(--radius-sm); cursor: pointer; text-transform: uppercase;
+      box-shadow: 0 2px 4px rgba(0, 86, 179, 0.2);
+    }
+    .btn-add:hover { background: var(--blue-hover); }
 
     /* Footer */
     footer {
-      border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 4rem;
-      text-align: center; color: var(--text-muted); font-size: 0.9rem;
+      background: var(--bg-surface); border-top: 2px solid var(--border);
+      color: var(--text-black); margin-top: 30px; padding: 30px 0 15px; font-size: 0.85rem;
     }
+    footer h4 { color: var(--text-blue); margin-bottom: 10px; font-size: 0.95rem; font-weight: 800; }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 6px; }
+    footer a { color: var(--text-black); text-decoration: none; font-weight: 500; }
+    footer a:hover { color: var(--text-blue); }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .footer-bottom { border-top: 1px solid var(--border); margin-top: 20px; padding-top: 15px; text-align: center; color: var(--text-muted); }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <div class="top-bar">
+    ⚡ FLASH SALE: UP TO 50% OFF ON PHONE TRADE-INS & ACCESSORIES TODAY!
+  </div>
+
   <header>
-    <div class="container nav-wrapper">
-      <a href="#" class="logo">13CENT <span>HUB EMPIRE</span></a>
-      <ul class="nav-links">
-        <li><a href="#phones">Phones</a></li>
-        <li><a href="#tradein">Trade-In</a></li>
-        <li><a href="#repairs">Repairs</a></li>
-      </ul>
-      <a href="#shop" class="btn btn-primary">Browse Store</a>
+    <div class="container header-inner">
+      <a href="#" class="logo">13CENT <span>HUB</span></a>
+      
+      <div class="search-box">
+        <input type="text" placeholder="Search phones, brands, repairs...">
+        <button type="button">SEARCH</button>
+      </div>
+
+      <div class="header-actions">
+        <a href="#" class="action-item">👤 Account</a>
+        <a href="#" class="action-item">🛒 Cart (0)</a>
+      </div>
+    </div>
+
+    <div class="category-nav">
+      <div class="container">
+        <ul>
+          <li><a href="#" class="active">All Categories</a></li>
+          <li><a href="#">Smartphones</a></li>
+          <li><a href="#">Refurbished iPhones</a></li>
+          <li><a href="#">Samsung Deals</a></li>
+          <li><a href="#">Trade-In Quotes</a></li>
+          <li><a href="#">Repair Services</a></li>
+          <li><a href="#">Accessories</a></li>
+        </ul>
+      </div>
     </div>
   </header>
 
   <main class="container">
-    <!-- Hero Section -->
-    <section class="hero">
-      <h1>Upgrade Your Tech.<br>Unbeatable Deals.</h1>
-      <p>Your one-stop empire for premium smartphones, instant trade-in values, and fast device repairs.</p>
-      <a href="#phones" class="btn btn-primary">Explore Inventory</a>
-    </section>
-
-    <!-- Featured Phones Grid -->
-    <h2 id="phones" style="font-size: 1.8rem;">Featured Smartphones</h2>
-    <div class="grid">
-      <div class="card">
-        <span class="card-tag">Certified Refurbished</span>
-        <h3>Flagship Phone Pro</h3>
-        <p>128GB • Unlocked • Grade A Condition</p>
-        <div class="price">$499.00</div>
-        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">View Details</a>
+    <!-- Promotional Banner -->
+    <div class="hero-banner">
+      <div>
+        <h1>13CENT EMPIRE DEALS</h1>
+        <p>Buy, sell, or repair phones at unbeatable marketplace prices.</p>
       </div>
-
-      <div class="card">
-        <span class="card-tag">Brand New</span>
-        <h3>Ultra Phone 5G</h3>
-        <p>256GB • Dual SIM • 1-Year Warranty</p>
-        <div class="price">$799.00</div>
-        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">View Details</a>
-      </div>
-
-      <div class="card">
-        <span class="card-tag">Budget Choice</span>
-        <h3>Lite Series Phone</h3>
-        <p>64GB • High Battery Life • Unlocked</p>
-        <div class="price">$249.00</div>
-        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">View Details</a>
-      </div>
+      <button class="btn-add" style="width: auto; padding: 10px 20px;">EXPLORE STORE</button>
     </div>
 
-    <!-- Empire Services -->
-    <h2 id="repairs" style="font-size: 1.8rem; margin-top: 4rem;">Empire Services</h2>
-    <div class="grid">
-      <div class="card" id="tradein">
-        <h3>Instant Phone Trade-In</h3>
-        <p>Swap your old device for store credit or cash in under 5 minutes.</p>
-        <a href="#" class="nav-links" style="color: var(--accent-blue); font-weight: 600;">Get a Quote &rarr;</a>
+    <!-- Flash Sales Section -->
+    <div class="section-title">
+      <span>🔥 Flash Sales</span>
+      <span class="timer">Time Left: 05h 12m 44s</span>
+    </div>
+
+    <div class="product-grid">
+      <!-- Product Card 1 -->
+      <div class="product-card">
+        <span class="badge">-25%</span>
+        <div class="img-placeholder">📱 Smartphone Image</div>
+        <div class="product-title">Refurbished Flagship Pro 128GB - Unlocked</div>
+        <div class="price-box">
+          <div class="current-price">$399.00</div>
+          <div class="old-price-row">
+            <span class="old-price">$530.00</span>
+            <span class="discount-pct">-25%</span>
+          </div>
+        </div>
+        <div class="rating">★★★★☆ (42)</div>
+        <button class="btn-add">ADD TO CART</button>
       </div>
 
-      <div class="card">
-        <h3>Screen & Battery Repairs</h3>
-        <p>Same-day repairs carried out by certified phone technicians.</p>
-        <a href="#" class="nav-links" style="color: var(--accent-blue); font-weight: 600;">Book Repair &rarr;</a>
+      <!-- Product Card 2 -->
+      <div class="product-card">
+        <span class="badge">-15%</span>
+        <div class="img-placeholder">📱 Smartphone Image</div>
+        <div class="product-title">Ultra 5G Phone 256GB Dual SIM (1 Year Warranty)</div>
+        <div class="price-box">
+          <div class="current-price">$679.00</div>
+          <div class="old-price-row">
+            <span class="old-price">$799.00</span>
+            <span class="discount-pct">-15%</span>
+          </div>
+        </div>
+        <div class="rating">★★★★★ (88)</div>
+        <button class="btn-add">ADD TO CART</button>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div class="product-card">
+        <span class="badge">-40%</span>
+        <div class="img-placeholder">🔌 Fast Charger</div>
+        <div class="product-title">65W Super Fast USB-C Power Adapter Wall Charger</div>
+        <div class="price-box">
+          <div class="current-price">$14.99</div>
+          <div class="old-price-row">
+            <span class="old-price">$24.99</span>
+            <span class="discount-pct">-40%</span>
+          </div>
+        </div>
+        <div class="rating">★★★★☆ (115)</div>
+        <button class="btn-add">ADD TO CART</button>
+      </div>
+
+      <!-- Product Card 4 -->
+      <div class="product-card">
+        <span class="badge">-30%</span>
+        <div class="img-placeholder">📱 Budget Phone</div>
+        <div class="product-title">Lite Edition Smartphone 64GB Long Battery</div>
+        <div class="price-box">
+          <div class="current-price">$149.00</div>
+          <div class="old-price-row">
+            <span class="old-price">$210.00</span>
+            <span class="discount-pct">-30%</span>
+          </div>
+        </div>
+        <div class="rating">★★★☆☆ (19)</div>
+        <button class="btn-add">ADD TO CART</button>
       </div>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer>
-    <div class="container">
-      <p>&copy; 2026 13cent Hub Empire. All rights reserved.</p>
+    <div class="container footer-grid">
+      <div>
+        <h4>LET US HELP YOU</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">How to buy on 13cent</a></li>
+          <li><a href="#">Track Your Order</a></li>
+          <li><a href="#">Return & Refunds</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ABOUT 13CENT HUB</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Empire Trade-In Program</a></li>
+          <li><a href="#">Repair Services</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>PAYMENT & DELIVERY</h4>
+        <ul>
+          <li><a href="#">Stripe / Credit Card</a></li>
+          <li><a href="#">Pay on Delivery</a></li>
+          <li><a href="#">Express Shipping</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 13cent Hub Empire. All Rights Reserved.</p>
     </div>
   </footer>
 

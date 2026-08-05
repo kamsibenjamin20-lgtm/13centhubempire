@@ -1,1 +1,59 @@
-css * {     margin: 0;     padding: 0;     box-sizing: border-box;     font-family: Arial, sans-serif; }  body {     background: #0b0f19;     color: white; }  header {     background: #111827;     padding: 20px;     display: flex;     justify-content: space-between;     align-items: center; }  .logo h1 {     color: #00aaff; }  nav a {     color: white;     text-decoration: none;     margin: 10px; }  .hero {     min-height: 70vh;     text-align: center;     padding: 120px 20px;     background: linear-gradient(135deg, #001f3f, #000000); }  .hero h2 {     font-size: 45px;     margin-bottom: 20px; }  .hero p {     font-size: 18px;     margin-bottom: 30px; }  .btn {     background: #00aaff;     color: white;     padding: 15px 30px;     border-radius: 30px;     text-decoration: none; }  .featured {     padding: 50px 20px;     text-align: center; }  .products {     display: flex;     justify-content: center;     gap: 20px;     flex-wrap: wrap; }  .card {     background: #111827;     padding: 20px;     border-radius: 15px;     width: 280px; }  .card img {     width: 100%;     border-radius: 10px; }  .about {     padding: 40px;     text-align: center; }  footer {     background: #000;     text-align: center;     padding: 20px; }  .whatsapp {     position: fixed;     right: 20px;     bottom: 20px;     background: #25D366;     color: white;     padding: 15px;     border-radius: 50px;     text-decoration: none; } 
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #111;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Small background designs */
+body::before {
+  content: "";
+  position: fixed;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: #003cff;
+  opacity: 0.08;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  bottom: -120px;
+  left: -100px;
+  width: 350px;
+  height: 350px;
+  background: #000;
+  opacity: 0.05;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+h1, h2, h3 {
+  color: #0047ff;
+}
+
+p {
+  color: #111;
+}
+
+.product {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+button {
+  background: #0047ff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+}

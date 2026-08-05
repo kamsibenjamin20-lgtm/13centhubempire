@@ -3,393 +3,275 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>13cent Hub Empire | iPhone, Samsung, Redmi, iPad & Headsets</title>
+  <title>13cent Hub Empire | Premium Gadgets</title>
   <style>
     :root {
-      --bg-body: #f0f4f8;          
+      --bg-body: #f8fafc;          
       --bg-surface: #ffffff;       
-      --bg-accent-light: #e6f0fa;  
       
-      --blue-primary: #0056b3;     
-      --blue-secondary: #003366;   
-      --blue-hover: #004085;       
+      --green-primary: #0a8a43;    /* Chekx style emerald green */
+      --green-hover: #076d34;      
+      --green-light: #e6f4ed;      
 
       --whatsapp-green: #25d366;   
-      --whatsapp-hover: #1da851;
+      
+      --text-black: #0f172a;      
+      --text-muted: #64748b;      
+      --text-light: #94a3b8;
 
-      --text-black: #111111;      
-      --text-blue: #0056b3;       
-      --text-muted: #4a5568;      
-
-      --border: #d0e1f9;          
-      --radius-sm: 4px;
-      --shadow: 0 2px 8px rgba(0, 86, 179, 0.08);
+      --border-color: #e2e8f0;    
+      --radius-card: 16px;
+      --radius-btn: 10px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg-body);
       color: var(--text-black);
       line-height: 1.4;
+      padding-bottom: 40px;
     }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 10px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 12px; }
 
-    .top-bar {
-      background: var(--blue-secondary);
-      color: #ffffff;
-      font-size: 0.75rem;
-      text-align: center;
-      padding: 6px 0;
-      font-weight: 600;
-    }
-
+    /* Header */
     header {
       background: var(--bg-surface);
-      box-shadow: var(--shadow);
+      border-bottom: 1px solid var(--border-color);
       position: sticky; top: 0; z-index: 100;
-      border-bottom: 2px solid var(--border);
+      padding: 14px 0;
     }
     .header-inner {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 0; gap: 15px;
     }
+    .logo-container { display: flex; flex-direction: column; }
     .logo {
-      font-size: 1.4rem; font-weight: 900; text-decoration: none;
-      color: var(--text-black); font-style: italic; white-space: nowrap;
+      font-size: 1.3rem; font-weight: 800; color: var(--green-primary);
+      text-decoration: none; line-height: 1.1;
     }
-    .logo span { color: var(--text-blue); }
+    .tagline-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
 
-    .search-box { flex: 1; max-width: 600px; display: flex; }
-    .search-box input {
-      width: 100%; padding: 10px 14px;
-      border: 2px solid var(--blue-primary);
-      border-right: none; border-radius: 4px 0 0 4px;
-      outline: none; font-size: 0.9rem; color: var(--text-black);
+    .cart-btn {
+      display: flex; align-items: center; gap: 8px;
+      background: #ffffff; border: 1px solid var(--border-color);
+      padding: 8px 16px; border-radius: 30px;
+      font-weight: 700; font-size: 0.9rem; color: var(--text-black);
+      cursor: pointer; text-decoration: none;
     }
-    .search-box button {
-      background: var(--blue-primary); color: #ffffff; border: none;
-      padding: 0 20px; font-weight: bold; border-radius: 0 4px 4px 0;
-      cursor: pointer; transition: background 0.2s;
-    }
-    .search-box button:hover { background: var(--blue-hover); }
-
-    .header-actions { display: flex; gap: 15px; align-items: center; }
-    .action-item {
-      text-decoration: none; color: var(--text-blue); font-size: 0.85rem;
-      font-weight: 700; display: flex; align-items: center; gap: 4px;
+    .cart-count {
+      background: var(--green-primary); color: #ffffff;
+      border-radius: 50%; width: 22px; height: 22px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 800;
     }
 
-    .category-nav {
-      background: var(--bg-surface); border-top: 1px solid var(--border);
-      overflow-x: auto; white-space: nowrap; scrollbar-width: none;
-    }
-    .category-nav::-webkit-scrollbar { display: none; }
-    .category-nav ul { display: flex; list-style: none; padding: 8px 0; gap: 15px; }
-    .category-nav a {
-      text-decoration: none; color: var(--text-black); font-size: 0.85rem;
-      font-weight: 600; padding: 4px 10px; border-radius: var(--radius-sm);
-    }
-    .category-nav a:hover, .category-nav a.active {
-      background: var(--blue-primary); color: #ffffff;
+    /* Sub-header slogan */
+    .hero-text {
+      padding: 16px 0 10px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
     }
 
-    .hero-banner {
-      background: linear-gradient(135deg, var(--blue-secondary) 0%, var(--blue-primary) 100%);
-      color: #ffffff; border-radius: 6px; padding: 25px; margin: 15px 0;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .hero-banner h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; color: #ffffff; }
-
-    .section-title {
-      background: var(--blue-primary); color: #ffffff; padding: 10px 15px;
-      border-radius: 6px 6px 0 0; font-size: 1.1rem; font-weight: 800;
-      text-transform: uppercase; display: flex; justify-content: space-between;
-      align-items: center; margin-top: 15px;
-    }
-
+    /* 2-Column Responsive Grid matching Mobile View */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 10px; background: var(--bg-surface); padding: 12px;
-      border-radius: 0 0 6px 6px; box-shadow: var(--shadow);
-      border: 1px solid var(--border); border-top: none;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 10px;
     }
+    @media (min-width: 768px) {
+      .product-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    }
+
+    /* Card Styling */
     .product-card {
-      background: #ffffff; border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-card);
+      padding: 12px;
       display: flex; flex-direction: column; justify-content: space-between;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
       position: relative;
+      box-shadow: var(--shadow-sm);
     }
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0, 86, 179, 0.15);
-    }
+
+    /* Status Badges */
     .badge {
-      position: absolute; top: 8px; left: 8px; z-index: 2;
-      background: var(--blue-primary); color: #ffffff;
-      font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 2px;
+      position: absolute; top: 12px; left: 12px; z-index: 2;
+      font-size: 0.65rem; font-weight: 800; padding: 4px 8px;
+      border-radius: 6px; text-transform: uppercase; letter-spacing: 0.02em;
     }
-    
+    .badge-brand-new { background: #0a8a43; color: #ffffff; }
+    .badge-uk-used { background: #1e6091; color: #ffffff; }
+
+    /* Image Box */
     .product-img-wrapper {
-      width: 100%; height: 160px; 
-      border-radius: 4px; overflow: hidden;
+      width: 100%; height: 180px; 
+      border-radius: 8px; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
-      background: var(--bg-accent-light);
       margin-bottom: 10px;
+      background: #fafafa;
     }
     .product-img-wrapper img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
+      max-width: 100%; max-height: 100%;
+      object-fit: contain;
     }
-    .product-card:hover .product-img-wrapper img { transform: scale(1.05); }
 
+    /* Card Info */
+    .brand-tag {
+      font-size: 0.7rem; font-weight: 700; color: var(--text-light);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;
+    }
     .product-title {
-      font-size: 0.85rem; color: var(--text-black); font-weight: 600;
-      line-height: 1.25; height: 2.5em; overflow: hidden;
-      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-      margin-bottom: 6px;
+      font-size: 0.95rem; font-weight: 800; color: var(--text-black);
+      line-height: 1.2; margin-bottom: 4px;
     }
-    .price-box { margin-bottom: 8px; }
-    .current-price { font-size: 1.1rem; font-weight: 800; color: var(--text-blue); }
-    .old-price-row { display: flex; gap: 6px; align-items: center; font-size: 0.75rem; }
-    .old-price { text-decoration: line-through; color: var(--text-muted); }
-    .discount-pct { color: var(--blue-primary); font-weight: 700; background: var(--bg-accent-light); padding: 0 4px; }
-    
-    .rating { font-size: 0.75rem; color: var(--blue-primary); margin-bottom: 8px; }
-
-    .btn-action-group { display: flex; flex-direction: column; gap: 6px; }
-    .btn-add {
-      width: 100%; background: var(--blue-primary); color: #ffffff;
-      border: none; padding: 8px 0; font-weight: 700; font-size: 0.75rem;
-      border-radius: var(--radius-sm); cursor: pointer; text-transform: uppercase;
+    .product-specs {
+      font-size: 0.75rem; color: var(--text-muted); margin-bottom: 10px;
+      line-height: 1.3; font-weight: 500;
     }
-    .btn-add:hover { background: var(--blue-hover); }
-
-    .btn-wa-card {
-      display: flex; align-items: center; justify-content: center; gap: 5px;
-      width: 100%; background: var(--whatsapp-green); color: #ffffff;
-      text-decoration: none; padding: 8px 0; font-weight: 700; font-size: 0.75rem;
-      border-radius: var(--radius-sm); text-transform: uppercase;
+    .price {
+      font-size: 1.15rem; font-weight: 900; color: var(--green-primary);
+      margin-bottom: 12px;
     }
-    .btn-wa-card:hover { background: var(--whatsapp-hover); }
 
+    /* Button Layout matching screenshot */
+    .btn-group {
+      display: flex; gap: 8px; align-items: center;
+    }
+    .btn-cart {
+      flex: 1; background: var(--green-primary); color: #ffffff;
+      border: none; padding: 10px 0; font-weight: 700; font-size: 0.85rem;
+      border-radius: var(--radius-btn); cursor: pointer; text-align: center;
+      transition: background 0.2s ease;
+    }
+    .btn-cart:hover { background: var(--green-hover); }
+
+    .btn-wa-icon {
+      width: 38px; height: 38px; background: #f1f5f9;
+      border: 1px solid var(--border-color); border-radius: var(--radius-btn);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: var(--text-muted); font-size: 1rem;
+      flex-shrink: 0; transition: all 0.2s ease;
+    }
+    .btn-wa-icon:hover {
+      background: var(--green-light); color: var(--green-primary);
+      border-color: var(--green-primary);
+    }
+
+    /* Floating WhatsApp Button */
     .whatsapp-float {
       position: fixed; bottom: 20px; right: 20px;
       background-color: var(--whatsapp-green); color: #ffffff;
-      border-radius: 50px; padding: 12px 20px; font-weight: 700;
-      font-size: 0.9rem; text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      display: flex; align-items: center; gap: 8px; z-index: 1000;
+      border-radius: 50px; width: 54px; height: 54px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2); z-index: 1000;
+      text-decoration: none; font-size: 1.6rem;
     }
-    .whatsapp-float:hover { background-color: var(--whatsapp-hover); }
-
-    footer {
-      background: var(--bg-surface); border-top: 2px solid var(--border);
-      color: var(--text-black); margin-top: 30px; padding: 30px 0 15px; font-size: 0.85rem;
-    }
-    footer h4 { color: var(--text-blue); margin-bottom: 10px; font-size: 0.95rem; font-weight: 800; }
-    footer ul { list-style: none; }
-    footer li { margin-bottom: 6px; }
-    footer a { color: var(--text-black); text-decoration: none; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-    .footer-bottom { border-top: 1px solid var(--border); margin-top: 20px; padding-top: 15px; text-align: center; color: var(--text-muted); }
   </style>
 </head>
 <body>
 
-  <a href="https://wa.me/2348106715713?text=Hello%2013cent%20Hub%20Empire,%20I%20want%20to%20make%20an%20inquiry." class="whatsapp-float" target="_blank" rel="noopener">
-    💬 Chat on WhatsApp
-  </a>
+  <!-- Floating WhatsApp Chat Icon -->
+  <a href="https://wa.me/2348106715713?text=Hello%2013cent%20Hub%20Empire,%20I%20want%20to%20make%20an%20inquiry." class="whatsapp-float" target="_blank" rel="noopener">💬</a>
 
-  <div class="top-bar">
-    ⚡ 13CENT HUB EMPIRE: BEST NAIRA DEALS ON IPHONES, SAMSUNG, REDMI, IPADS & HEADSETS!
-  </div>
-
+  <!-- Header -->
   <header>
     <div class="container header-inner">
-      <a href="#" class="logo">13CENT <span>HUB</span></a>
-      <div class="search-box">
-        <input type="text" placeholder="Search iPhone, Samsung, Redmi, iPad, Headsets...">
-        <button type="button">SEARCH</button>
+      <div class="logo-container">
+        <a href="#" class="logo">13cent Hub Empire</a>
+        <span class="tagline-sub">RC No: 9187336</span>
       </div>
-      <div class="header-actions">
-        <a href="https://wa.me/2348106715713" target="_blank" class="action-item">💬 WhatsApp</a>
-        <a href="#" class="action-item">🛒 Cart (0)</a>
-      </div>
-    </div>
-
-    <div class="category-nav">
-      <div class="container">
-        <ul>
-          <li><a href="#" class="active">All Products</a></li>
-          <li><a href="#iphone">iPhone</a></li>
-          <li><a href="#samsung">Samsung</a></li>
-          <li><a href="#redmi">Redmi</a></li>
-          <li><a href="#ipad">iPad</a></li>
-          <li><a href="#headsets">Headsets</a></li>
-        </ul>
-      </div>
+      <a href="#" class="cart-btn">
+        🛒 Cart <span class="cart-count">0</span>
+      </a>
     </div>
   </header>
 
   <main class="container">
-    <div class="hero-banner">
-      <div>
-        <h1>13CENT EMPIRE DEALS</h1>
-        <p>Premium phones and gadgets available for immediate delivery across Nigeria.</p>
-      </div>
-      <a href="https://wa.me/2348106715713?text=Hello%2013cent%20Hub,%20I%20want%20to%20see%20your%20full%20inventory." target="_blank" class="btn-wa-card" style="width: auto; padding: 10px 20px;">ORDER VIA WHATSAPP</a>
+    <div class="hero-text">
+      Carefully selected gadgets — brand new and UK-used — at competitive prices.
     </div>
 
-    <div class="section-title">
-      <span>🔥 Featured Inventory (Naira Deals)</span>
-    </div>
-
+    <!-- 2-Column Grid Layout -->
     <div class="product-grid">
       
-      <!-- PRODUCT 1: IPHONE -->
-      <div class="product-card" id="iphone">
-        <span class="badge">HOT DEAL</span>
+      <!-- CARD 1: iPhone 17 Pro Max -->
+      <div class="product-card">
+        <span class="badge badge-brand-new">BRAND NEW</span>
         <div class="product-img-wrapper">
-          <img src="images/iphone.jpg" alt="iPhone">
+          <img src="images/iphone.jpg" alt="iPhone 17 Pro Max">
         </div>
-        <div class="product-title">Apple iPhone Series (128GB) - Clean UK Used</div>
-        <div class="price-box">
-          <div class="current-price">₦680,000</div>
-          <div class="old-price-row">
-            <span class="old-price">₦720,000</span>
-            <span class="discount-pct">-6%</span>
-          </div>
+        <div>
+          <div class="brand-tag">IPHONE</div>
+          <div class="product-title">iPhone 17 Pro Max</div>
+          <div class="product-specs">6.9" Super Retina XDR · 256GB Storage · 12GB RAM</div>
+          <div class="price">₦2,460,000</div>
         </div>
-        <div class="rating">★★★★★ (128)</div>
-        <div class="btn-action-group">
-          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20iPhone%20for%20N680,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
-          <button class="btn-add">Add to Cart</button>
+        <div class="btn-group">
+          <button class="btn-cart">Add to Cart</button>
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20iPhone%2017%20Pro%20Max%20(N2,460,000)." target="_blank" class="btn-wa-icon" title="Chat on WhatsApp">💬</a>
         </div>
       </div>
 
-      <!-- PRODUCT 2: SAMSUNG -->
-      <div class="product-card" id="samsung">
-        <span class="badge">BESTSELLER</span>
+      <!-- CARD 2: Galaxy S26 Ultra -->
+      <div class="product-card">
+        <span class="badge badge-brand-new">BRAND NEW</span>
         <div class="product-img-wrapper">
-          <img src="images/samsung.jpg" alt="Samsung">
+          <img src="images/samsung.jpg" alt="Galaxy S26 Ultra">
         </div>
-        <div class="product-title">Samsung Galaxy Series 5G (256GB)</div>
-        <div class="price-box">
-          <div class="current-price">₦580,000</div>
-          <div class="old-price-row">
-            <span class="old-price">₦630,000</span>
-            <span class="discount-pct">-8%</span>
-          </div>
+        <div>
+          <div class="brand-tag">SAMSUNG</div>
+          <div class="product-title">Galaxy S26 Ultra</div>
+          <div class="product-specs">6.9" Dynamic AMOLED · 512GB Storage · 12GB RAM</div>
+          <div class="price">₦2,300,000</div>
         </div>
-        <div class="rating">★★★★★ (95)</div>
-        <div class="btn-action-group">
-          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Samsung%20for%20N580,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
-          <button class="btn-add">Add to Cart</button>
+        <div class="btn-group">
+          <button class="btn-cart">Add to Cart</button>
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Galaxy%20S26%20Ultra%20(N2,300,000)." target="_blank" class="btn-wa-icon" title="Chat on WhatsApp">💬</a>
         </div>
       </div>
 
-      <!-- PRODUCT 3: REDMI -->
-      <div class="product-card" id="redmi">
-        <span class="badge">BUDGET KING</span>
+      <!-- CARD 3: iPhone 12 Pro Max 5G -->
+      <div class="product-card">
+        <span class="badge badge-uk-used">UK USED</span>
         <div class="product-img-wrapper">
-          <img src="images/redmi.jpg" alt="Redmi">
+          <img src="images/iphone.jpg" alt="iPhone 12 Pro Max 5G">
         </div>
-        <div class="product-title">Xiaomi Redmi Note Series (8GB/256GB)</div>
-        <div class="price-box">
-          <div class="current-price">₦240,000</div>
-          <div class="old-price-row">
-            <span class="old-price">₦270,000</span>
-            <span class="discount-pct">-11%</span>
-          </div>
+        <div>
+          <div class="brand-tag">IPHONE</div>
+          <div class="product-title">iPhone 12 Pro Max 5G</div>
+          <div class="product-specs">6.7" Super Retina XDR · 256GB Storage · 5G Capable</div>
+          <div class="price">₦550,000</div>
         </div>
-        <div class="rating">★★★★☆ (64)</div>
-        <div class="btn-action-group">
-          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Redmi%20for%20N240,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
-          <button class="btn-add">Add to Cart</button>
+        <div class="btn-group">
+          <button class="btn-cart">Add to Cart</button>
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20iPhone%2012%20Pro%20Max%20(N550,000)." target="_blank" class="btn-wa-icon" title="Chat on WhatsApp">💬</a>
         </div>
       </div>
 
-      <!-- PRODUCT 4: IPAD -->
-      <div class="product-card" id="ipad">
-        <span class="badge">POPULAR</span>
+      <!-- CARD 4: Xiaomi Redmi 15C -->
+      <div class="product-card">
+        <span class="badge badge-brand-new">BRAND NEW</span>
         <div class="product-img-wrapper">
-          <img src="images/ipad.jpg" alt="iPad">
+          <img src="images/redmi.jpg" alt="Xiaomi Redmi 15C">
         </div>
-        <div class="product-title">Apple iPad Retina Display WiFi + Cellular</div>
-        <div class="price-box">
-          <div class="current-price">₦490,000</div>
-          <div class="old-price-row">
-            <span class="old-price">₦540,000</span>
-            <span class="discount-pct">-9%</span>
-          </div>
+        <div>
+          <div class="brand-tag">ANDROID</div>
+          <div class="product-title">Xiaomi Redmi 15C</div>
+          <div class="product-specs">6.9" IPS LCD · 128GB Storage · 4GB RAM</div>
+          <div class="price">₦155,000</div>
         </div>
-        <div class="rating">★★★★★ (82)</div>
-        <div class="btn-action-group">
-          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20iPad%20for%20N490,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
-          <button class="btn-add">Add to Cart</button>
-        </div>
-      </div>
-
-      <!-- PRODUCT 5: HEADSET -->
-      <div class="product-card" id="headsets">
-        <span class="badge">ACCESSORY</span>
-        <div class="product-img-wrapper">
-          <img src="images/headset.jpg" alt="Headset">
-        </div>
-        <div class="product-title">Pro Wireless Bluetooth Headset - Deep Bass</div>
-        <div class="price-box">
-          <div class="current-price">₦25,000</div>
-          <div class="old-price-row">
-            <span class="old-price">₦35,000</span>
-            <span class="discount-pct">-28%</span>
-          </div>
-        </div>
-        <div class="rating">★★★★☆ (210)</div>
-        <div class="btn-action-group">
-          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Headset%20for%20N25,000." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
-          <button class="btn-add">Add to Cart</button>
+        <div class="btn-group">
+          <button class="btn-cart">Add to Cart</button>
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Xiaomi%20Redmi%2015C%20(N155,000)." target="_blank" class="btn-wa-icon" title="Chat on WhatsApp">💬</a>
         </div>
       </div>
 
     </div>
   </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <h4>LET US HELP YOU</h4>
-        <ul>
-          <li><a href="https://wa.me/2348106715713" target="_blank">Contact via WhatsApp</a></li>
-          <li><a href="#">How to buy on 13cent</a></li>
-          <li><a href="#">Track Your Order</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>ABOUT 13CENT HUB</h4>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Trade-In Program</a></li>
-          <li><a href="#">Terms & Conditions</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>PAYMENT & DELIVERY</h4>
-        <ul>
-          <li><a href="#">WhatsApp Direct Order</a></li>
-          <li><a href="#">Pay on Delivery</a></li>
-          <li><a href="#">Nationwide Delivery</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 13cent Hub Empire. All Rights Reserved. Contact: +234 810 671 5713</p>
-    </div>
-  </footer>
 
 </body>
 </html>

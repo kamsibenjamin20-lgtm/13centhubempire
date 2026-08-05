@@ -1,198 +1,124 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ==========================================================================
+   Micro-Interactions & Professional UI Upgrades
+   ========================================================================== */
+
+/* 1. Smooth Scrolling & Custom Blue Scrollbar */
+html {
+  scroll-behavior: smooth;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f8ff;
-  color: #111;
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-body);
+}
+::-webkit-scrollbar-thumb {
+  background: #a0c4ff;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blue-primary);
 }
 
-
-/* Navigation */
-.navbar {
-  background: linear-gradient(90deg, #0047ff, #001f99);
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* 2. Interactive Focus States for Accessibility */
+input:focus-visible, 
+button:focus-visible, 
+a:focus-visible {
+  outline: 2px solid var(--blue-primary);
+  outline-offset: 2px;
 }
 
-.navbar h1 {
-  color: white;
-  font-size: 28px;
-}
-
-.menu a {
-  color: white;
-  text-decoration: none;
-  margin-left: 25px;
-  font-size: 17px;
-}
-
-
-/* Hero Section */
-.hero {
-  min-height: 75vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 50px;
-  background: white;
-}
-
-
-.hero-text {
-  max-width: 550px;
-}
-
-
-.hero-text h2 {
-  font-size: 50px;
-  color: #0047ff;
-  margin-bottom: 20px;
-}
-
-
-.hero-text p {
-  font-size: 20px;
-  line-height: 1.6;
-  color: #222;
-  margin-bottom: 30px;
-}
-
-
-/* Phone Image */
-.hero-image img {
-  width: 280px;
-  height: auto;
-  object-fit: contain;
-}
-
-
-/* Buttons */
-button {
-  background: #0047ff;
-  color: white;
-  border: none;
-  padding: 15px 35px;
-  border-radius: 10px;
-  font-size: 17px;
-  cursor: pointer;
-}
-
-
-/* Products */
-.products {
-  padding: 60px 30px;
-  text-align: center;
-}
-
-
-.products h2 {
-  color: #0047ff;
-  font-size: 35px;
-}
-
-
-.product-container {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 35px;
-}
-
-
+/* 3. Refined Card Hover Elevate & Micro-Glow */
 .product-card {
-  background: white;
-  width: 280px;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease;
+  will-change: transform, box-shadow;
 }
 
-
-.product-card img {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -6px rgba(0, 86, 179, 0.18);
+  border-color: #80b3ff;
 }
 
-
-.product-card h3 {
-  color: #0047ff;
-  font-size: 22px;
-  margin: 15px 0;
+/* 4. Glassmorphism Badges & Badging Accent */
+.badge {
+  background: rgba(0, 86, 179, 0.9) !important;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 6px rgba(0, 86, 179, 0.25);
 }
 
-
-.product-card p {
-  color: #333;
+/* 5. Modern Button Micro-Animations */
+.btn-add, .search-box button {
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
-
-/* About Section */
-.about {
-  background: #0047ff;
-  color: white;
-  padding: 50px;
-  text-align: center;
+.btn-add:active, .search-box button:active {
+  transform: scale(0.97);
 }
 
-
-.about h2 {
-  color: white;
-  margin-bottom: 20px;
-}
-
-
-/* Contact */
-.contact {
-  padding: 50px;
-  text-align: center;
-}
-
-
-.contact h2 {
-  color: #0047ff;
-}
-
-
-/* Footer */
-footer {
-  background: #001f99;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-
-/* Background Design */
-body::before {
+/* Button Subtle Light Reflection Effect */
+.btn-add::after {
   content: "";
-  position: fixed;
-  top: -100px;
-  right: -100px;
-  width: 300px;
-  height: 300px;
-  background: #0047ff;
-  opacity: 0.08;
-  border-radius: 50%;
-  z-index: -1;
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: rotate(30deg);
+  transition: left 0.6s ease;
 }
 
+.btn-add:hover::after {
+  left: 140%;
+}
 
-body::after {
-  content: "";
-  position: fixed;
-  bottom: -100px;
-  left: -100px;
-  width: 300px;
-  height: 300px;
-  background: #000;
-  opacity: 0.05;
-  border-radius: 50%;
-  z-index: -1;
+/* 6. Image Placeholder Shimmer Animation */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+
+.img-placeholder {
+  background: linear-gradient(
+    90deg, 
+    var(--bg-accent-light) 0%, 
+    #ffffff 50%, 
+    var(--bg-accent-light) 100%
+  );
+  background-size: 400px 100%;
+  animation: shimmer 2.5s infinite ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .img-placeholder {
+  transform: scale(1.03);
+}
+
+/* 7. Enhanced Category Navigation Touch Smoothness */
+.category-nav {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Hide scrollbar for category ribbon */
+}
+.category-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.category-nav a {
+  transition: all 0.2s ease;
+}
+
+/* 8. Crisp Typography Tweaks */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 }

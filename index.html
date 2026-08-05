@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>13cent Hub Empire | Online Shopping for Phones & Tech</title>
+  <title>13cent Hub Empire | iPhone, Samsung, Redmi, iPad & Headsets</title>
   <style>
     :root {
       /* Palette: Blue & White Backgrounds, Blue & Black Text */
@@ -14,6 +14,9 @@
       --blue-primary: #0056b3;     /* Deep bold blue for actions & titles */
       --blue-secondary: #003366;   /* Dark navy blue */
       --blue-hover: #004085;       /* Darker blue hover state */
+
+      --whatsapp-green: #25d366;   /* Official WhatsApp accent color */
+      --whatsapp-hover: #1da851;
 
       --text-black: #111111;      /* Crisp black body text */
       --text-blue: #0056b3;       /* Blue text highlights */
@@ -30,6 +33,9 @@
       background-color: var(--bg-body);
       color: var(--text-black);
       line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 10px; }
@@ -90,13 +96,17 @@
     .category-nav {
       background: var(--bg-surface); border-top: 1px solid var(--border);
       overflow-x: auto; white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
+    .category-nav::-webkit-scrollbar { display: none; }
     .category-nav ul {
-      display: flex; list-style: none; padding: 8px 0; gap: 20px;
+      display: flex; list-style: none; padding: 8px 0; gap: 15px;
     }
     .category-nav a {
       text-decoration: none; color: var(--text-black); font-size: 0.85rem;
       font-weight: 600; padding: 4px 10px; border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
     }
     .category-nav a:hover, .category-nav a.active {
       background: var(--blue-primary); color: #ffffff;
@@ -123,7 +133,7 @@
       padding: 3px 8px; border-radius: 3px; color: #ffffff;
     }
 
-    /* Product Grid layout */
+    /* Product Grid Layout */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -135,24 +145,39 @@
       background: #ffffff; border: 1px solid var(--border);
       border-radius: var(--radius-sm); padding: 10px;
       display: flex; flex-direction: column; justify-content: space-between;
-      transition: box-shadow 0.2s, transform 0.2s; position: relative;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                  border-color 0.25s ease;
+      will-change: transform, box-shadow; position: relative;
     }
     .product-card:hover {
-      box-shadow: 0 4px 12px rgba(0, 86, 179, 0.15); transform: translateY(-2px);
-      border-color: var(--blue-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -6px rgba(0, 86, 179, 0.18);
+      border-color: #80b3ff;
     }
     .badge {
-      position: absolute; top: 8px; left: 8px;
-      background: var(--blue-primary); color: #ffffff;
+      position: absolute; top: 8px; left: 8px; z-index: 2;
+      background: rgba(0, 86, 179, 0.9) !important; color: #ffffff;
+      backdrop-filter: blur(4px); letter-spacing: 0.04em;
+      box-shadow: 0 2px 6px rgba(0, 86, 179, 0.25);
       font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 2px;
     }
-    .img-placeholder {
-      width: 100%; height: 140px; background: var(--bg-accent-light);
-      border: 1px dashed var(--border); border-radius: 4px;
+    
+    /* Responsive Product Image Wrapper */
+    .product-img-wrapper {
+      width: 100%; height: 160px; 
+      border-radius: 4px; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
-      color: var(--text-blue); font-size: 0.8rem; font-weight: 600;
+      background: var(--bg-accent-light);
       margin-bottom: 10px;
     }
+    .product-img-wrapper img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover .product-img-wrapper img { transform: scale(1.05); }
+
     .product-title {
       font-size: 0.85rem; color: var(--text-black); font-weight: 600;
       line-height: 1.25; height: 2.5em; overflow: hidden;
@@ -166,13 +191,57 @@
     .discount-pct { color: var(--blue-primary); font-weight: 700; background: var(--bg-accent-light); padding: 0 4px; }
     
     .rating { font-size: 0.75rem; color: var(--blue-primary); margin-bottom: 8px; }
+
+    /* Action Buttons */
+    .btn-action-group {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .btn-add, .btn-wa-card, .search-box button {
+      position: relative; overflow: hidden;
+      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
     .btn-add {
       width: 100%; background: var(--blue-primary); color: #ffffff;
-      border: none; padding: 8px 0; font-weight: 700; font-size: 0.8rem;
+      border: none; padding: 8px 0; font-weight: 700; font-size: 0.75rem;
       border-radius: var(--radius-sm); cursor: pointer; text-transform: uppercase;
       box-shadow: 0 2px 4px rgba(0, 86, 179, 0.2);
     }
     .btn-add:hover { background: var(--blue-hover); }
+
+    .btn-wa-card {
+      display: flex; align-items: center; justify-content: center; gap: 5px;
+      width: 100%; background: var(--whatsapp-green); color: #ffffff;
+      text-decoration: none; padding: 8px 0; font-weight: 700; font-size: 0.75rem;
+      border-radius: var(--radius-sm); text-transform: uppercase;
+      box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+    }
+    .btn-wa-card:hover { background: var(--whatsapp-hover); }
+
+    .btn-add:active, .btn-wa-card:active, .search-box button:active { transform: scale(0.97); }
+
+    /* Sticky WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--whatsapp-green);
+      color: #ffffff;
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 1000;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .whatsapp-float:hover {
+      background-color: var(--whatsapp-hover);
+      transform: scale(1.05);
+    }
 
     /* Footer */
     footer {
@@ -186,133 +255,202 @@
     footer a:hover { color: var(--text-blue); }
     .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
     .footer-bottom { border-top: 1px solid var(--border); margin-top: 20px; padding-top: 15px; text-align: center; color: var(--text-muted); }
+
+    /* Custom Scrollbars */
+    html { scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-body); }
+    ::-webkit-scrollbar-thumb { background: #a0c4ff; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--blue-primary); }
+
+    /* Focus States */
+    input:focus-visible, button:focus-visible, a:focus-visible {
+      outline: 2px solid var(--blue-primary); outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Sticky WhatsApp Floating Button -->
+  <a href="https://wa.me/2348106715713?text=Hello%2013cent%20Hub%20Empire,%20I%20want%20to%20make%20an%20inquiry." class="whatsapp-float" target="_blank" rel="noopener">
+    💬 Chat on WhatsApp
+  </a>
+
+  <!-- Top Banner -->
   <div class="top-bar">
-    ⚡ FLASH SALE: UP TO 50% OFF ON PHONE TRADE-INS & ACCESSORIES TODAY!
+    ⚡ 13CENT HUB EMPIRE: DEALS ON IPHONES, SAMSUNG, REDMI, IPADS & HEADSETS!
   </div>
 
+  <!-- Header Section -->
   <header>
     <div class="container header-inner">
       <a href="#" class="logo">13CENT <span>HUB</span></a>
       
       <div class="search-box">
-        <input type="text" placeholder="Search phones, brands, repairs...">
+        <input type="text" placeholder="Search iPhone, Samsung, Redmi, iPad, Headsets...">
         <button type="button">SEARCH</button>
       </div>
 
       <div class="header-actions">
-        <a href="#" class="action-item">👤 Account</a>
+        <a href="https://wa.me/2348106715713" target="_blank" class="action-item">💬 WhatsApp</a>
         <a href="#" class="action-item">🛒 Cart (0)</a>
       </div>
     </div>
 
+    <!-- Category Menu Navigation -->
     <div class="category-nav">
       <div class="container">
         <ul>
-          <li><a href="#" class="active">All Categories</a></li>
-          <li><a href="#">Smartphones</a></li>
-          <li><a href="#">Refurbished iPhones</a></li>
-          <li><a href="#">Samsung Deals</a></li>
-          <li><a href="#">Trade-In Quotes</a></li>
-          <li><a href="#">Repair Services</a></li>
-          <li><a href="#">Accessories</a></li>
+          <li><a href="#" class="active">All Products</a></li>
+          <li><a href="#iphone">iPhone</a></li>
+          <li><a href="#samsung">Samsung</a></li>
+          <li><a href="#redmi">Redmi</a></li>
+          <li><a href="#ipad">iPad</a></li>
+          <li><a href="#headsets">Headsets</a></li>
         </ul>
       </div>
     </div>
   </header>
 
   <main class="container">
-    <!-- Promotional Banner -->
+    <!-- Promotional Hero Banner -->
     <div class="hero-banner">
       <div>
         <h1>13CENT EMPIRE DEALS</h1>
-        <p>Buy, sell, or repair phones at unbeatable marketplace prices.</p>
+        <p>Premium iPhones, Samsung, Redmi, iPads, and Headsets at marketplace prices.</p>
       </div>
-      <button class="btn-add" style="width: auto; padding: 10px 20px;">EXPLORE STORE</button>
+      <a href="https://wa.me/2348106715713?text=Hello%2013cent%20Hub,%20I%20want%20to%20see%20your%20full%20inventory." target="_blank" class="btn-wa-card" style="width: auto; padding: 10px 20px; font-size: 0.85rem;">ORDER VIA WHATSAPP</a>
     </div>
 
-    <!-- Flash Sales Section -->
+    <!-- Product Grid Section -->
     <div class="section-title">
-      <span>🔥 Flash Sales</span>
+      <span>🔥 Featured Inventory</span>
       <span class="timer">Time Left: 05h 12m 44s</span>
     </div>
 
     <div class="product-grid">
-      <!-- Product Card 1 -->
-      <div class="product-card">
-        <span class="badge">-25%</span>
-        <div class="img-placeholder">📱 Smartphone Image</div>
-        <div class="product-title">Refurbished Flagship Pro 128GB - Unlocked</div>
+      
+      <!-- Product 1: iPhone -->
+      <div class="product-card" id="iphone">
+        <span class="badge">HOT DEAL</span>
+        <div class="product-img-wrapper">
+          <!-- Change src below to your local image (e.g. src="images/iphone.jpg") or image URL -->
+          <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=60" alt="Apple iPhone">
+        </div>
+
+        <div class="product-title">Apple iPhone Series (Unlocked) - Guaranteed Clean</div>
         <div class="price-box">
-          <div class="current-price">$399.00</div>
+          <div class="current-price">$450.00</div>
           <div class="old-price-row">
-            <span class="old-price">$530.00</span>
-            <span class="discount-pct">-25%</span>
+            <span class="old-price">$550.00</span>
+            <span class="discount-pct">-18%</span>
           </div>
         </div>
-        <div class="rating">★★★★☆ (42)</div>
-        <button class="btn-add">ADD TO CART</button>
+        <div class="rating">★★★★★ (128)</div>
+        <div class="btn-action-group">
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Apple%20iPhone%20Series%20($450.00)." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
+          <button class="btn-add">Add to Cart</button>
+        </div>
       </div>
 
-      <!-- Product Card 2 -->
-      <div class="product-card">
-        <span class="badge">-15%</span>
-        <div class="img-placeholder">📱 Smartphone Image</div>
-        <div class="product-title">Ultra 5G Phone 256GB Dual SIM (1 Year Warranty)</div>
+      <!-- Product 2: Samsung -->
+      <div class="product-card" id="samsung">
+        <span class="badge">BESTSELLER</span>
+        <div class="product-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=60" alt="Samsung Galaxy">
+        </div>
+
+        <div class="product-title">Samsung Galaxy Series 5G - High Battery Life</div>
         <div class="price-box">
-          <div class="current-price">$679.00</div>
+          <div class="current-price">$380.00</div>
           <div class="old-price-row">
-            <span class="old-price">$799.00</span>
+            <span class="old-price">$450.00</span>
             <span class="discount-pct">-15%</span>
           </div>
         </div>
-        <div class="rating">★★★★★ (88)</div>
-        <button class="btn-add">ADD TO CART</button>
+        <div class="rating">★★★★★ (95)</div>
+        <div class="btn-action-group">
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Samsung%20Galaxy%20Series%20($380.00)." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
+          <button class="btn-add">Add to Cart</button>
+        </div>
       </div>
 
-      <!-- Product Card 3 -->
-      <div class="product-card">
-        <span class="badge">-40%</span>
-        <div class="img-placeholder">🔌 Fast Charger</div>
-        <div class="product-title">65W Super Fast USB-C Power Adapter Wall Charger</div>
+      <!-- Product 3: Redmi -->
+      <div class="product-card" id="redmi">
+        <span class="badge">BUDGET KING</span>
+        <div class="product-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=60" alt="Xiaomi Redmi">
+        </div>
+
+        <div class="product-title">Xiaomi Redmi Series - Fast Charging & Dual SIM</div>
         <div class="price-box">
-          <div class="current-price">$14.99</div>
+          <div class="current-price">$180.00</div>
           <div class="old-price-row">
-            <span class="old-price">$24.99</span>
-            <span class="discount-pct">-40%</span>
+            <span class="old-price">$220.00</span>
+            <span class="discount-pct">-18%</span>
           </div>
         </div>
-        <div class="rating">★★★★☆ (115)</div>
-        <button class="btn-add">ADD TO CART</button>
+        <div class="rating">★★★★☆ (64)</div>
+        <div class="btn-action-group">
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Xiaomi%20Redmi%20Series%20($180.00)." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
+          <button class="btn-add">Add to Cart</button>
+        </div>
       </div>
 
-      <!-- Product Card 4 -->
-      <div class="product-card">
-        <span class="badge">-30%</span>
-        <div class="img-placeholder">📱 Budget Phone</div>
-        <div class="product-title">Lite Edition Smartphone 64GB Long Battery</div>
+      <!-- Product 4: iPad -->
+      <div class="product-card" id="ipad">
+        <span class="badge">POPULAR</span>
+        <div class="product-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&auto=format&fit=crop&q=60" alt="Apple iPad">
+        </div>
+
+        <div class="product-title">Apple iPad Retina Display - WiFi + Cellular</div>
         <div class="price-box">
-          <div class="current-price">$149.00</div>
+          <div class="current-price">$320.00</div>
           <div class="old-price-row">
-            <span class="old-price">$210.00</span>
-            <span class="discount-pct">-30%</span>
+            <span class="old-price">$390.00</span>
+            <span class="discount-pct">-17%</span>
           </div>
         </div>
-        <div class="rating">★★★☆☆ (19)</div>
-        <button class="btn-add">ADD TO CART</button>
+        <div class="rating">★★★★★ (82)</div>
+        <div class="btn-action-group">
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Apple%20iPad%20Series%20($320.00)." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
+          <button class="btn-add">Add to Cart</button>
+        </div>
       </div>
+
+      <!-- Product 5: Headset -->
+      <div class="product-card" id="headsets">
+        <span class="badge">ACCESSORY</span>
+        <div class="product-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60" alt="Wireless Headset">
+        </div>
+
+        <div class="product-title">Pro Wireless Bluetooth Headset - Pure Bass</div>
+        <div class="price-box">
+          <div class="current-price">$35.00</div>
+          <div class="old-price-row">
+            <span class="old-price">$60.00</span>
+            <span class="discount-pct">-41%</span>
+          </div>
+        </div>
+        <div class="rating">★★★★☆ (210)</div>
+        <div class="btn-action-group">
+          <a href="https://wa.me/2348106715713?text=Hi,%20I%20want%20to%20buy%20the%20Pro%20Wireless%20Bluetooth%20Headset%20($35.00)." target="_blank" class="btn-wa-card">Order on WhatsApp</a>
+          <button class="btn-add">Add to Cart</button>
+        </div>
+      </div>
+
     </div>
   </main>
 
+  <!-- Footer Section -->
   <footer>
     <div class="container footer-grid">
       <div>
         <h4>LET US HELP YOU</h4>
         <ul>
-          <li><a href="#">Help Center</a></li>
+          <li><a href="https://wa.me/2348106715713" target="_blank">Contact via WhatsApp</a></li>
           <li><a href="#">How to buy on 13cent</a></li>
           <li><a href="#">Track Your Order</a></li>
           <li><a href="#">Return & Refunds</a></li>
@@ -330,14 +468,14 @@
       <div>
         <h4>PAYMENT & DELIVERY</h4>
         <ul>
-          <li><a href="#">Stripe / Credit Card</a></li>
+          <li><a href="#">WhatsApp Direct Order</a></li>
           <li><a href="#">Pay on Delivery</a></li>
           <li><a href="#">Express Shipping</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 13cent Hub Empire. All Rights Reserved.</p>
+      <p>&copy; 2026 13cent Hub Empire. All Rights Reserved. Contact: +234 810 671 5713</p>
     </div>
   </footer>
 
